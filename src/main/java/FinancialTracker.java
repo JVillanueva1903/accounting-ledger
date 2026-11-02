@@ -134,12 +134,54 @@ public class FinancialTracker {
     /* ------------------------------------------------------------------
        Display helpers: show data in neat columns
        ------------------------------------------------------------------ */
-    private static void displayLedger() { /* TODO – print all transactions in column format, newest first */ }
+    private static <Transaction> void displayLedger() {
+        // TODO – print all transactions in column format, newest first
+        System.out.printf("%-15s %-30s %10s%n", "Date", "Description", "Amount");
+        System.out.println("-----------------------------------------------------------");
 
-    private static void displayDeposits() { /* TODO – only amount > 0               */ }
+        for (int i = transactions.size() - 1; i >= 0; i--) {
+            FinancialTracker.Transaction t = transactions.get(i);
+            System.out.printf("%-15s %-30s %10.2f%n",
+                    t.getDate(),
+                    t.getDescription(),
+                    t.getAmount());
+        }
+    }
 
-    private static void displayPayments() { /* TODO – only amount < 0               */ }
+    private static <Transaction> void displayDeposits() {
+        // TODO – only amount > 0
+        System.out.printf("%-15s %-30s %10s%n", "Date", "Description", "Amount");
+        System.out.println("-----------------------------------------------------------");
 
+        for (int i = transactions.size() - 1; i >= 0; i--) {
+            FinancialTracker.Transaction t = transactions.get(i);
+
+            if (t.getAmount() <= 0) {
+                continue;
+            }
+            System.out.printf("%-15s %-30s %10.2f%n",
+                    t.getDate(),
+                    t.getDescription(),
+                    t.getAmount());
+        }
+    }
+
+    private static <Transaction> void displayPayments() {
+        // TODO – only amount < 0
+        System.out.printf("%-15s %-30s %10s%n", "Date", "Description", "Amount");
+        System.out.println("-----------------------------------------------------------");
+
+        for (int i = transactions.size() - 1; i >= 0; i--) {
+            FinancialTracker.Transaction t = transactions.get(i);
+
+            if (t.getAmount() < 0) {
+                System.out.printf("%-15s %-30s %10.2f%n",
+                        t.getDate(),
+                        t.getDescription(),
+                        t.getAmount());
+            }
+        }
+    }
     /* ------------------------------------------------------------------
        Reports menu
        ------------------------------------------------------------------ */
@@ -176,27 +218,139 @@ public class FinancialTracker {
        ------------------------------------------------------------------ */
     private static void filterTransactionsByDate(LocalDate start, LocalDate end) {
         // TODO – iterate transactions, print those within the range
+        for (Transaction transaction : transactions) {
+            LocalDate date = transaction.getDate();
+
+            if ((date.isEqual(start) || date.isAfter(start)) &&
+                    (date.isEqual(end) || date.isBefore(end))) {
+                System.out.println(transaction);
+            }
+        }
     }
 
     private static void filterTransactionsByVendor(String vendor) {
         // TODO – iterate transactions, print those with matching vendor
+        for (Transaction transaction : transactions) {
+            if (transaction.getVendor().equalsIgnoreCase(vendor)) {
+                System.out.println(transaction);
+            }
+        }
     }
 
     private static void customSearch(Scanner scanner) {
         // TODO – prompt for any combination of date range, description,
         //        vendor, and exact amount, then display matches
+
+        System.out.print("Start date (yyyy-MM-dd, leave blank to skip): ");
+        String startInput = scanner.nextLine();
+
+        System.out.print("End date (yyyy-MM-dd, leave blank to skip): ");
+        String endInput = scanner.nextLine();
+
+        System.out.print("Description (leave blank to skip): ");
+        String description = scanner.nextLine();
+
+        System.out.print("Vendor (leave blank to skip): ");
+        String vendor = scanner.nextLine();
+
+        System.out.print("Exact amount (leave blank to skip): ");
+        String amountInput = scanner.nextLine();
+
+        LocalDate startDate = startInput.isBlank() ? null : LocalDate.parse(startInput);
+        LocalDate endDate = endInput.isBlank() ? null : LocalDate.parse(endInput);
+        Double amount = amountInput.isBlank() ? null : Double.parseDouble(amountInput);
+
+        for (Transaction transaction : transactions) {
+            boolean match = true;
+
+            if (startDate != null) {
+                assert transaction.getDate() != null;
+                if (!transaction.getDate().isBefore(startDate)) {
+                } else {
+                    match = false;
+                }
+            }
+
+            if (endDate != null &&
+                    transaction.getDate().isAfter(endDate)) {
+                match = false;
+            }
+
+            if (!description.isBlank() &&
+                    !transaction.getDescription().toLowerCase()
+                            .contains(description.toLowerCase())) {
+                match = false;
+            }
+
+            if (!vendor.isBlank() &&
+                    !transaction.getVendor().equalsIgnoreCase(vendor)) {
+                match = false;
+            }
+
+            if (amount != null &&
+                    transaction.getAmount() != amount) {
+                match = false;
+            }
+
+            if (match) {
+                System.out.println(transaction);
+            }
+        }
     }
+
+    public class Transaction {
+        public String getVendor() {
+            return null;
+        }
+
+        public LocalTime getDate() {
+            return null;
+        }
+
+        public Object getDescription() {
+            return null;
+        }
+
+        public int getAmount() {
+            return 0;
+        }
+    }
+}
 
     /* ------------------------------------------------------------------
        Utility parsers (you can reuse in many places)
        ------------------------------------------------------------------ */
     private static LocalDate parseDate(String s) {
         /* TODO – return LocalDate or null */
-        return null;
+        try {
+            return LocalDate.parse(s);
+        } catch (Exception e) {
+            return null;
+        }
     }
+        private static Double parseDouble(String s) {
+            /* TODO – return Double or null */
+            try {
+                return Double.parseDouble(s);
+            } catch (Exception e) {
+                return null;
+            }
+        }
+    private static class Transaction {
+        public Object getDate() {
+            return null;
+        }
 
-    private static Double parseDouble(String s) {
-        /* TODO – return Double   or null */
-        return null;
+        public Object getDescription() {
+            return null;
+        }
+
+        public Object getAmount() {
+            return null;
+        }
+
+        public String getVendor() {
+            return null;
+        }
     }
 }
