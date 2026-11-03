@@ -219,7 +219,7 @@ public class FinancialTracker {
     private static void filterTransactionsByDate(LocalDate start, LocalDate end) {
         // TODO – iterate transactions, print those within the range
         for (Transaction transaction : transactions) {
-            LocalDate date = transaction.getDate();
+            LocalDate date = LocalDate.from(transaction.getDate());
 
             if ((date.isEqual(start) || date.isAfter(start)) &&
                     (date.isEqual(end) || date.isBefore(end))) {
@@ -265,20 +265,20 @@ public class FinancialTracker {
 
             if (startDate != null) {
                 assert transaction.getDate() != null;
-                if (!transaction.getDate().isBefore(startDate)) {
+                if (!transaction.getDate().isBefore(LocalTime.from(startDate))) {
                 } else {
                     match = false;
                 }
             }
 
             if (endDate != null &&
-                    transaction.getDate().isAfter(endDate)) {
+                    transaction.getDate().isAfter(LocalTime.from(endDate))) {
                 match = false;
             }
 
             if (!description.isBlank() &&
-                    !transaction.getDescription().toLowerCase()
-                            .contains(description.toLowerCase())) {
+                    !Boolean.parseBoolean(transaction.getDescription().getClass()
+                            .toString())) {
                 match = false;
             }
 
@@ -297,6 +297,27 @@ public class FinancialTracker {
             }
         }
     }
+
+    /* ------------------------------------------------------------------
+           Utility parsers (you can reuse in many places)
+           ------------------------------------------------------------------ */
+    private static LocalDate parseDate(String s) {
+        /* TODO – return LocalDate or null */
+        try {
+            return LocalDate.parse(s);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private static Double parseDouble(String s) {
+            /* TODO – return Double or null */
+            try {
+                return Double.parseDouble(s);
+            } catch (Exception e) {
+                return null;
+            }
+        }
 
     public class Transaction {
         public String getVendor() {
@@ -317,40 +338,4 @@ public class FinancialTracker {
     }
 }
 
-    /* ------------------------------------------------------------------
-       Utility parsers (you can reuse in many places)
-       ------------------------------------------------------------------ */
-    private static LocalDate parseDate(String s) {
-        /* TODO – return LocalDate or null */
-        try {
-            return LocalDate.parse(s);
-        } catch (Exception e) {
-            return null;
-        }
-    }
-        private static Double parseDouble(String s) {
-            /* TODO – return Double or null */
-            try {
-                return Double.parseDouble(s);
-            } catch (Exception e) {
-                return null;
-            }
-        }
-    private static class Transaction {
-        public Object getDate() {
-            return null;
-        }
 
-        public Object getDescription() {
-            return null;
-        }
-
-        public Object getAmount() {
-            return null;
-        }
-
-        public String getVendor() {
-            return null;
-        }
-    }
-}
