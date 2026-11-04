@@ -13,7 +13,7 @@
 
 <!-- Three to five sentences. What the application does, who uses it, what problem it solves.
      Write it for someone who has never seen the workbook: a recruiter, a classmate, you in six months. -->
-
+This application I created has a list of options you can choose from and how you want to see your transactions.
 
 
 ## Features
@@ -21,12 +21,12 @@
 <!-- One bullet per thing the app can do, in the order of your menu. Mark bonuses.
      For an API (Capstone 3), one line per endpoint instead: method, path, what it does.
      Be honest: list what works. If something is half done, say so under Future Work instead.
-     Example:
+     Example: 
      - Shows every product in the store
      - Searches products by name (bonus) -->
-
--
--
+ 
+-  A simple list with options to navigate the project
+- 
 -
 
 ## User Stories
@@ -35,8 +35,17 @@
      As a [type of user], I want [some goal] so that [some reason].
      Same text as the cards on your GitHub project board. -->
 
-- As a ..., I want ..., so that ...
-- As a ..., I want ..., so that ...
+- As a dispatcher I want to change the order of workflow so that all work in this building can be completed on time in a reasonable manner.
+
+- As a customer I want to buy stock from an investment company so that my business can continue working with other investors
+
+- As a rider I want to add more products to the store shelves so that the store has products to sell and money to be made.
+
+- As a customer I want to add more supply to my farm so that the crops can grow at a reasonable time 
+
+- As a rider I want to travel on a route that will allow me to deliver customer packages in a quick timely manner so that the farther routes can be met before the deadline 
+
+- 
 
 ## Setup
 
@@ -117,10 +126,10 @@
 
 <!-- Your name and, if you like, your GitHub profile link. For a team workshop, one line per person with what each one built. -->
 
-- **Your Name**
+- **Jarin Villanueva**
 
 ## Thanks
 
 <!-- Optional. The people who helped: the instructor, a classmate who debugged with you, a mentor. -->
 
-- Thank you to ... for ...
+- Thank you for viewing my presentation 
