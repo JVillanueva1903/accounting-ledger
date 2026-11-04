@@ -277,8 +277,7 @@ public class FinancialTracker {
             }
 
             if (!description.isBlank() &&
-                    !Boolean.parseBoolean(transaction.getDescription().getClass()
-                            .toString())) {
+                    !Boolean.parseBoolean(transaction.getDescription().getClass().toString())) {
                 match = false;
             }
 
