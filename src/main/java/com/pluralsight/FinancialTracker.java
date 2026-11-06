@@ -1,6 +1,8 @@
 package com.pluralsight;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -79,8 +81,40 @@ public class FinancialTracker {
         // TODO: create file if it does not exist, then read each line,
         //       parse the five fields, build a Transaction object,
         //       and add it to the transactions list.
-    }
 
+        try {
+            File file = new File(fileName);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            Scanner fileScanner = new Scanner(file);
+
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+
+                String[] parts = line.split("\\|");
+
+                if (parts.length == 5) {
+                    String date = parts[0];
+                    String time = parts[1];
+                    String description = parts[2];
+                    String vendor = parts[3];
+                    double amount = Double.parseDouble(parts[4]);
+
+                    Transaction transaction =
+                            new Transaction(date, time, description, vendor, amount);
+
+                    transactions.add(transaction);
+                }
+            }
+
+            fileScanner.close();
+        } catch (IOException e) {
+            System.out.println("Error loading transactions.");
+        }
+    }
     /* ------------------------------------------------------------------
        Add new transactions
        ------------------------------------------------------------------ */
@@ -93,6 +127,47 @@ public class FinancialTracker {
      */
     private static void addDeposit(Scanner scanner) {
         // TODO
+
+        System.out.print("Enter date and time (yyyy-MM-dd HH:mm:ss): ");
+        String dateTime = scanner.nextLine();
+
+        String[] dateTimeParts = dateTime.split(" ");
+
+        String date = dateTimeParts[0];
+        String time = dateTimeParts[1];
+
+        System.out.print("Enter description: ");
+        String description = scanner.nextLine();
+
+        System.out.print("Enter vendor: ");
+        String vendor = scanner.nextLine();
+
+        double amount;
+
+        do {
+            System.out.print("Enter deposit amount: ");
+            amount = Double.parseDouble(scanner.nextLine());
+
+            if (amount <= 0) {
+                System.out.println("Amount must be positive.");
+            }
+        } while (amount <= 0);
+
+        Transaction transaction =
+                new Transaction(date, time, description, vendor, amount);
+
+        transactions.add(transaction);
+
+        try {
+            FileWriter writer = new FileWriter(FILE_NAME, true);
+
+            writer.write(date + "|" + time + "|" + description + "|"
+                    + vendor + "|" + amount + "\n");
+
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving deposit.");
+        }
     }
 
     /**
@@ -102,6 +177,49 @@ public class FinancialTracker {
      */
     private static void addPayment(Scanner scanner) {
         // TODO
+
+        System.out.print("Enter date and time (yyyy-MM-dd HH:mm:ss): ");
+        String dateTime = scanner.nextLine();
+
+        String[] dateTimeParts = dateTime.split(" ");
+
+        String date = dateTimeParts[0];
+        String time = dateTimeParts[1];
+
+        System.out.print("Enter description: ");
+        String description = scanner.nextLine();
+
+        System.out.print("Enter vendor: ");
+        String vendor = scanner.nextLine();
+
+        double amount;
+
+        do {
+            System.out.print("Enter payment amount: ");
+            amount = Double.parseDouble(scanner.nextLine());
+
+            if (amount <= 0) {
+                System.out.println("Amount must be positive.");
+            }
+        } while (amount <= 0);
+
+        amount = -amount;
+
+        Transaction transaction =
+                new Transaction(date, time, description, vendor, amount);
+
+        transactions.add(transaction);
+
+        try {
+            FileWriter writer = new FileWriter(FILE_NAME, true);
+
+            writer.write(date + "|" + time + "|" + description + "|"
+                    + vendor + "|" + amount + "\n");
+
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving payment.");
+        }
     }
 
     /* ------------------------------------------------------------------
@@ -318,7 +436,11 @@ public class FinancialTracker {
             }
         }
 
-    public class Transaction {
+    public static class Transaction {
+        public Transaction(String date, String time, String description, String vendor, double amount) {
+
+        }
+
         public String getVendor() {
             return null;
         }
