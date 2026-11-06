@@ -119,7 +119,7 @@ This code makes a list with different options and when the user selects an optio
 
 <!-- What you would add or fix next, one bullet each. Unfinished bonuses belong here. -->
 
-- More additional options for a custom search and customize the project 
+- More additional options for a custom search and customize the project (colors,design,logo,etc..)
 -  Additional transactions and vendors within the transaction list
 
 ## Resources
