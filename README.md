@@ -94,7 +94,7 @@ This application I created has a list of options you can choose from and how you
      Optional GIF: LICEcap (free, Windows and Mac, <https://www.cockos.com/licecap/>) records a region of the
      screen straight to a .gif. Keep it under 10 seconds and under 10 MB, save it into `images`. -->
 
-![Main menu](images/feature.png)![Screenshot 2026-11-06 030721.png](../../../../Pictures/Screenshots/Screenshot%202026-11-06%20030721.png)
+![Main menu](images/feature.png)![Screenshot 2026-11-06 030721.png](img.png)
 
 ![One feature in action](images/feature.png)![img.png](img.png)
 
