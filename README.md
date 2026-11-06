@@ -1,4 +1,4 @@
-# Project Title
+# Account Ledger
 
 <!-- HOW TO USE THIS TEMPLATE
      Save it as README.md at the root of your project, next to pom.xml. Replace every comment like this one
@@ -13,7 +13,7 @@
 
 <!-- Three to five sentences. What the application does, who uses it, what problem it solves.
      Write it for someone who has never seen the workbook: a recruiter, a classmate, you in six months. -->
-This application I created has a list of options you can choose from and how you want to see your transactions.
+This application I created has a list of options you can choose from and how you want to see your transactions payments and deposits. This also features a custom list to see all tracked data in a custom separate file 
 
 
 ## Features
@@ -57,10 +57,10 @@ This application I created has a list of options you can choose from and how you
 ### Running the application
 
 1. Clone this repository, or download it as a zip and unzip it.
-2. In IntelliJ: File > Open, pick the project folder (the one that holds `pom.xml`), press Open.
+2. In IntelliJ take the code copied from the git and put it in your IntelliJ app 
 3. Wait for IntelliJ to finish indexing (progress bar at the bottom).
-4. Open `src/main/java/com/pluralsight/YourMainClassName.java`. <!-- replace YourMainClassName with the class that has main -->
-5. Right-click inside the file and choose Run 'YourMainClassName.main()'.
+4. Run the program and go through each choice
+5. Check results in the printed transaction file created 
 
 
 
@@ -114,7 +114,7 @@ private static void ledgerMenu(Scanner scanner) {
         System.out.println("R) Reports");
         System.out.println("H) Home";
 ```
-This code makes a list with different options and when the user selects an option it prompts something different based on the letter typed.
+This code makes a list with different options and when the user selects an option it prompts something different based on the letter typed.  Im proud of this code because of how its able to track every data that entered in and from what area the information is located.
 ## Future Work
 
 <!-- What you would add or fix next, one bullet each. Unfinished bonuses belong here. -->
