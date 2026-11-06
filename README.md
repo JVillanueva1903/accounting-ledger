@@ -94,25 +94,25 @@ This application I created has a list of options you can choose from and how you
      Optional GIF: LICEcap (free, Windows and Mac, <https://www.cockos.com/licecap/>) records a region of the
      screen straight to a .gif. Keep it under 10 seconds and under 10 MB, save it into `images`. -->
 
-![Main menu](images/menu.png)
+![Main menu](images/menu.png)![img.png](img.png)
 
 ![One feature in action](images/feature.png)
 
 ## A piece of code I am proud of
-
 <!-- Paste one short block of your own code (5 to 15 lines) between the three backticks, then write two
      or three sentences: what it does and why you chose to write it that way. This is what you show on
-     demo day and what you talk about in an interview. -->
+     demo day and what you talk about in an interview. --> 
 
-```java
-
+```java 
+private static void ledgerMenu(Scanner scanner) {
+    boolean running = true;
 ```
 
 ## Future Work
 
 <!-- What you would add or fix next, one bullet each. Unfinished bonuses belong here. -->
 
--
+- More additional options for a custom search and customize the project 
 -
 
 ## Resources
