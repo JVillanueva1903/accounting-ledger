@@ -26,8 +26,8 @@ This application I created has a list of options you can choose from and how you
      - Searches products by name (bonus) -->
  
 -  A simple list with options to navigate the project
-- 
--
+-  A list to allow a user to navigate their deposits and payments
+- Show a ledger list that has different options letting the user search payment history and deposits
 
 ## User Stories
 
@@ -45,7 +45,7 @@ This application I created has a list of options you can choose from and how you
 
 - As a rider I want to travel on a route that will allow me to deliver customer packages in a quick timely manner so that the farther routes can be met before the deadline 
 
-- 
+-  As a dispatcher I want to reorganize how every employee is stationed so that each station gets worked on by people who feel prominate in that area
 
 ## Setup
 
@@ -62,7 +62,7 @@ This application I created has a list of options you can choose from and how you
 4. Open `src/main/java/com/pluralsight/YourMainClassName.java`. <!-- replace YourMainClassName with the class that has main -->
 5. Right-click inside the file and choose Run 'YourMainClassName.main()'.
 
-### Data and configuration
+
 
 <!-- OPTIONAL. Anything the program needs that is not code: data files and where they must sit, files the
      program creates, a database script to run first, a settings file to edit (connection, port).
@@ -71,7 +71,7 @@ This application I created has a list of options you can choose from and how you
      - `inventory.csv` sits at the project root, next to `pom.xml`. The program reads it at start.
      - `logs.txt` is created by the program at the project root on the first run. -->
 
--
+
 
 ## Technologies Used
 
@@ -94,9 +94,9 @@ This application I created has a list of options you can choose from and how you
      Optional GIF: LICEcap (free, Windows and Mac, <https://www.cockos.com/licecap/>) records a region of the
      screen straight to a .gif. Keep it under 10 seconds and under 10 MB, save it into `images`. -->
 
-![Main menu](images/menu.png)![img.png](img.png)
+![Main menu](images/menu.png)![Screenshot 2026-11-06 030721.png](../../../../Pictures/Screenshots/Screenshot%202026-11-06%20030721.png)
 
-![One feature in action](images/feature.png)
+![One feature in action](images/feature.png)![img.png](img.png)
 
 ## A piece of code I am proud of
 <!-- Paste one short block of your own code (5 to 15 lines) between the three backticks, then write two
@@ -105,22 +105,29 @@ This application I created has a list of options you can choose from and how you
 
 ```java 
 private static void ledgerMenu(Scanner scanner) {
-    boolean running = true;
+    boolean running = true; while (running) {
+        System.out.println("Ledger");
+        System.out.println("Choose an option:");
+        System.out.println("A) All");
+        System.out.println("D) Deposits");
+        System.out.println("P) Payments");
+        System.out.println("R) Reports");
+        System.out.println("H) Home";
 ```
-
+This code makes a list with different options and when the user selects an option it prompts something different based on the letter typed.
 ## Future Work
 
 <!-- What you would add or fix next, one bullet each. Unfinished bonuses belong here. -->
 
 - More additional options for a custom search and customize the project 
--
+-  Additional transactions and vendors within the transaction list
 
 ## Resources
 
 <!-- What helped you: the workbook, the week's hub pages, a tutorial, a documentation page. Real links. -->
 
 - Java YearUp Fall 2026 hub: <https://raymaroun.github.io/yearup-java-fall2026/>
--
+- Java visual hub for account ledger: https://raymaroun.github.io/yearup-java-fall2026/week-04/index.html#04-date-range-reports
 
 ## Author
 
@@ -132,4 +139,4 @@ private static void ledgerMenu(Scanner scanner) {
 
 <!-- Optional. The people who helped: the instructor, a classmate who debugged with you, a mentor. -->
 
-- Thank you for viewing my presentation 
+- Thank you for taking time viewing my presentation 
